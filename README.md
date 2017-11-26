@@ -49,7 +49,7 @@ sudo -E flood_monitor
 To check that it is running successfully, tail the log file:
 
 ```
-tail -f /var/log/flood_monitor.log
+tail -f /var/log/flood_monitor/flood_monitor.log
 ```
 
 ## Troubleshooting
