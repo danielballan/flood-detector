@@ -2,6 +2,7 @@ from . import _PCF8591 as ADC
 import RPi.GPIO as GPIO
 import time
 import math
+import keen
 import os
 import logging
 import logging.handlers
@@ -56,7 +57,9 @@ def handle_change(x):
 def loop():
     status = 1
     while True:
-        logger.info('%s', ADC.read(0))
+        value = ADC.read(0)
+        logger.info('%s', value)
+        keen.add_event("water_heater_moisture", {"value": value})
         
         tmp = GPIO.input(DO);
         if tmp != status:
